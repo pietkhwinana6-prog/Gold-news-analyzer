@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0f14">
+<title>Gold News AI Analyzer — Prototype</title>
+<style>
+:root{--bg:#0b0f14;--panel:#121922;--panel2:#0f151d;--line:#263241;--text:#edf2f7;--muted:#91a0b3;--gold:#e7b84b;--green:#42d392;--red:#ff6b75;--blue:#74b9ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#1a2430 0,#0b0f14 45%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1100px;margin:auto;padding:20px 15px 45px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0 22px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#f4d47d,#b78321);display:grid;place-items:center;color:#17130a;font-size:25px;font-weight:900;box-shadow:0 7px 24px #d6a83a22}
+h1{font-size:clamp(19px,4vw,27px);margin:0;letter-spacing:.3px}.subtitle{color:var(--muted);font-size:12px;margin-top:4px}.badge{border:1px solid #6a5525;color:#f1ce75;background:#2a2110;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:800;letter-spacing:.6px}
+.hero{padding:25px 0 18px}.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.7px}.hero h2{font-size:clamp(25px,5vw,38px);line-height:1.12;margin:9px 0}.hero p{max-width:680px;color:var(--muted);line-height:1.6;margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card{background:linear-gradient(180deg,#141c26,#10161e);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 10px 30px #0002}.card h3{margin:0 0 15px;font-size:15px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:12px;color:#b8c3d0}input,select,textarea{width:100%;background:#0b1118;border:1px solid #2b394a;border-radius:9px;padding:11px 10px;color:var(--text);font:inherit;font-size:14px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--gold)}textarea{min-height:76px;resize:vertical}.hint{color:var(--muted);font-size:11px;line-height:1.5}
+button{width:100%;border:0;border-radius:10px;padding:13px 15px;font-size:14px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#f3d27b,#c18c28);color:#181308;margin-top:14px}button:active{transform:scale(.99)}
+.results{display:flex;flex-direction:column;gap:12px}.resultbox{background:#0c1219;border:1px solid var(--line);border-radius:12px;padding:14px}.resultlabel{font-size:10px;letter-spacing:1.2px;color:var(--muted);font-weight:800;text-transform:uppercase}.resultvalue{font-size:18px;font-weight:800;margin-top:7px}.detail{color:#bdc7d3;font-size:13px;line-height:1.6;margin-top:7px}.pill{display:inline-block;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;margin-top:8px}.neutral{background:#26303c;color:#d2dce7}.bull{background:#123b2c;color:#6fe4ac}.bear{background:#451e25;color:#ff9299}.warn{border-color:#594821;background:#211b10}.warn .resultvalue{color:#f0ca65}.disclaimer{margin-top:15px;border:1px solid #4d3f23;background:#19160f;color:#d8cba9;border-radius:12px;padding:13px;font-size:11px;line-height:1.6}.bottom{color:#667587;text-align:center;font-size:11px;padding-top:22px}.minirow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.mini{padding:12px;background:#0b1118;border:1px solid var(--line);border-radius:11px}.mini b{display:block;font-size:13px}.mini span{font-size:10px;color:var(--muted);display:block;margin-top:5px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr 1fr}.card{padding:15px}.minirow{gap:7px}.mini{padding:10px}.resultvalue{font-size:16px}}
+@media(max-width:390px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.badge{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="brand"><div class="logo">Au</div><div><h1>GOLD NEWS <span style="color:var(--gold)">ANALYZER</span></h1><div class="subtitle">XAUUSD • Economic-event interpretation • Prototype</div></div></div>
+ <div class="badge">DEMO · MANUAL DATA</div>
+</header>
+<section class="hero">
+ <div class="eyebrow">MACRO NEWS WORKSPACE</div>
+ <h2>Understand the news.<br><span style="color:var(--gold)">Plan the risk.</span></h2>
+ <p>Enter an economic release to see a structured explanation of what it could mean for the US dollar and Gold. This prototype does not fetch live news or place trades.</p>
+ <div class="minirow">
+  <div class="mini"><b>🇿🇦 SAST</b><span>South African time (UTC+2)</span></div>
+  <div class="mini"><b>🥇 XAUUSD</b><span>Gold-focused interpretation</span></div>
+  <div class="mini"><b>⚠️ Scenario-based</b><span>No guaranteed predictions</span></div>
+ </div>
+</section>
+<div class="grid">
+<section class="card">
+ <h3>01 / Economic release details</h3>
+ <div class="formgrid">
+  <div class="field"><label for="event">Economic event</label><select id="event"><option value="CPI">US CPI inflation</option><option value="Core CPI">US Core CPI</option><option value="PPI">US PPI inflation</option><option value="NFP">US Nonfarm Payrolls (NFP)</option><option value="FOMC">FOMC interest-rate decision</option><option value="PCE">US PCE inflation</option><option value="GDP">US GDP growth</option><option value="Claims">US jobless claims</option><option value="Other">Other / mixed news</option></select></div>
+  <div class="field"><label for="tone">Headline context</label><select id="tone"><option value="normal">Normal release</option><option value="surprise">Large surprise</option><option value="mixed">Mixed signals</option><option value="uncertain">Unclear / incomplete</option></select></div>
+  <div class="field"><label for="actual">Actual figure</label><input id="actual" placeholder="e.g. 3.1%"></div>
+  <div class="field"><label for="forecast">Forecast</label><input id="forecast" placeholder="e.g. 3.3%"></div>
+  <div class="field"><label for="previous">Previous figure</label><input id="previous" placeholder="e.g. 3.4%"></div>
+  <div class="field"><label for="usd">US dollar reaction (optional)</label><select id="usd"><option value="unknown">Not checked yet</option><option value="up">USD is rising</option><option value="down">USD is falling</option><option value="flat">USD is mixed / flat</option></select></div>
+  <div class="field full"><label for="price">Gold price reaction (optional)</label><select id="price"><option value="unknown">Not checked yet</option><option value="up">Gold is rising after the release</option><option value="down">Gold is falling after the release</option><option value="volatile">Gold is volatile / whipsawing</option><option value="flat">Gold has little movement</option></select></div>
+  <div class="field full"><label for="notes">Extra context (optional)</label><textarea id="notes" placeholder="e.g. Fed speakers, bond yields, price near resistance..."></textarea></div>
+ </div>
+ <button onclick="analyze()">ANALYZE POSSIBLE GOLD IMPACT →</button>
+ <p class="hint">Tip: use the same units for actual, forecast and previous. For rate decisions, enter the rate or change consistently.</p>
+</section>
+<section class="card">
+ <h3>02 / Analysis snapshot</h3>
+ <div class="results" aria-live="polite">
+  <div class="resultbox"><div class="resultlabel">Possible macro bias</div><div class="resultvalue" id="bias">Waiting for input</div><div class="detail" id="biasdetail">Enter actual and forecast figures, then tap Analyze.</div></div>
+  <div class="resultbox"><div class="resultlabel">Why it may matter</div><div class="detail" id="why">Inflation, jobs and central-bank decisions can shift expectations for US interest rates, Treasury yields and the dollar. Gold can react to those shifts.</div></div>
+  <div class="resultbox"><div class="resultlabel">Live reaction check</div><div class="resultvalue" id="reaction">Not supplied</div><div class="detail" id="reactiondetail">Add the observed USD and Gold reactions on the left. This prototype does not connect to a live price feed.</div></div>
+  <div class="resultbox warn"><div class="resultlabel">Risk status</div><div class="resultvalue" id="risk">High caution around major releases</div><div class="detail" id="riskdetail">Spreads can widen, price can spike in both directions, and stop-loss orders may fill at a worse price than expected.</div></div>
+ </div>
+ <div class="disclaimer"><b>Important:</b> This is an educational scenario tool, not financial advice or a trading signal. The first price move can reverse. Consider the full statement, revisions, bond yields, USD reaction and technical structure before deciding anything.</div>
+</section>
+</div>
+<div class="bottom">GOLD NEWS ANALYZER · Prototype v0.1 · No live data connection · No trade execution</div>
+</div>
+<script>
+function cleanNum(s){if(!s)return null;const m=s.replace(/,/g,'').match(/-?\\d+(?:\\.\\d+)?/);return m?Number(m[0]):null}
+function analyze(){
+ const ev=document.getElementById('event').value, tone=document.getElementById('tone').value;
+ const a=cleanNum(document.getElementById('actual').value), f=cleanNum(document.getElementById('forecast').value), p=cleanNum(document.getElementById('previous').value);
+ const usd=document.getElementById('usd').value, price=document.getElementById('price').value, notes=document.getElementById('notes').value.trim();
+ let bias='Unclear / wait for confirmation', detail='The figures alone do not provide a reliable directional call. Wait for the market reaction and consider the wider context.', why='';
+ const inflation=['CPI','Core CPI','PPI','PCE'].includes(ev);
+ const labor=['NFP','Claims'].includes(ev);
+ let direction=0, hasComparison=(a!==null&&f!==null);
+ if(hasComparison){
+  const surprise=a-f;
+  if(inflation){direction=surprise>0? -1:surprise<0?1:0;why=surprise>0?'Inflation came in above forecast, which can support expectations for tighter Fed policy and put pressure on Gold.':'Inflation came in below forecast, which can ease rate pressure and potentially support Gold.';}
+  else if(ev==='NFP'){direction=surprise>0?-1:surprise<0?1:0;why=surprise>0?'Payroll growth beat expectations, which may support the USD and weigh on Gold if yields rise.':'Payroll growth missed expectations, which may soften the USD and support Gold if yields fall.';}
+  else if(ev==='Claims'){direction=surprise>0?1:surprise<0?-1:0;why=surprise>0?'Higher-than-expected jobless claims can signal labor-market cooling and may support Gold if rate expectations fall.':'Lower-than-expected claims can signal a resilient labor market and may weigh on Gold if yields and the USD rise.';}
+  else if(ev==='GDP'){direction=surprise>0?-1:surprise<0?1:0;why=surprise>0?'Stronger growth can support the USD and yields, potentially pressuring Gold; the inflation and Fed-policy context matters.':'Weaker growth may support Gold if it lowers yield and rate expectations, but risk sentiment also matters.';}
+  else {why='For this event, interpret the headline together with the central-bank statement, rate expectations, yields and the USD. The number by itself may not determine Gold direction.';}
+  if(direction===1){bias='Potentially bullish for Gold';detail='The surprise may support Gold if the USD and Treasury yields soften. This is a macro possibility, not an entry signal.'}
+  else if(direction===-1){bias='Potentially bearish for Gold';detail='The surprise may pressure Gold if the USD and Treasury yields rise. This is a macro possibility, not an entry signal.'}
+  else {bias='Neutral / mixed';detail='Actual matched forecast, or the event needs more context. Watch the reaction rather than forcing a direction.'}
+ }else{
+  if(inflation)why='For inflation releases, a hotter-than-forecast reading can lift rate expectations and weigh on Gold; a cooler reading can do the opposite. Enter actual and forecast to compare.';
+  else if(labor)why='For jobs data, stronger-than-expected labor figures can support the USD and yields, while weaker data can soften them. Enter actual and forecast to compare.';
+  else why='This release can influence interest-rate expectations, the USD and Treasury yields. Enter actual and forecast where applicable, then check the market response.';
+ }
+ if(ev==='FOMC'){why='For FOMC, the statement, projections, press conference and rate-path expectations usually matter more than the rate decision alone. A widely expected decision may produce little movement.';bias='Statement and guidance matter most';detail='Compare the decision with expectations, then assess the Fed’s tone and the market reaction.'}
+ if(tone==='mixed'||tone==='uncertain'){bias='Mixed signals — wait';detail='The context is mixed or incomplete. Avoid treating the headline as a clear direction; wait for confirmation from yields, the USD and price action.'}
+ if(tone==='surprise'&&bias!=='Statement and guidance matter most'){detail+=' The release is marked as a large surprise, so volatility may be elevated.'}
+ document.getElementById('bias').textContent=bias;
+ document.getElementById('biasdetail').textContent=detail;
+ document.getElementById('why').textContent=why+(p!==null?' Previous figure entered: '+document.getElementById('previous').value+'.':'')+(notes?' Extra context: '+notes:'');
+ let r='Not supplied',rd='Add the observed USD and Gold reactions on the left.';
+ if(usd==='up'&&price==='down'){r='USD up · Gold down';rd='This is consistent with a common inverse USD–Gold relationship, but it does not prove the news caused the move.'}
+ else if(usd==='down'&&price==='up'){r='USD down · Gold up';rd='This is consistent with a common inverse USD–Gold relationship, but yields and other factors can override it.'}
+ else if(price==='volatile'){r='Whipsaw / high volatility';rd='Avoid reading one candle as confirmation. Let volatility settle and use your own risk rules.'}
+ else if(price==='up'||price==='down'||usd!=='unknown'){r='Reaction is mixed or partial';rd='Compare the USD, Treasury yields and Gold price together; one market alone may give an incomplete picture.'}
+ document.getElementById('reaction').textContent=r;document.getElementById('reactiondetail').textContent=rd;
+ const risk=(tone==='surprise'||ev==='CPI'||ev==='Core CPI'||ev==='NFP'||ev==='FOMC'||ev==='PCE')?'Major-event caution':'Use caution and verify event importance';
+ document.getElementById('risk').textContent=risk;
+ document.getElementById('riskdetail').textContent='Check spread, slippage, liquidity and your predefined risk limit. Do not increase position size to recover a loss. '+(tone==='surprise'?'A large surprise may create especially fast two-way movement.':'');
+}
+</script>
+</body>
+                                                             </html>
